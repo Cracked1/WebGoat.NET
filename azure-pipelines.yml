@@ -19,8 +19,8 @@ steps:
 - task: Veracode Flaw Importer@2
   inputs:
     ConnectionDetailsSelection: 'Credentials'
-    username: 'saifullah.dabir@outlook.com'
-    password: 'Myoutlook@00'
+    username: 'saifullah.sk@moneymart.com'
+    password: 'Mymoney@0021'
     veracodeAppProfile: 'InstaCheques'
     sandboxName: 'webgoat'
     importType: 'All Unmitigated Flaws Violating Policy'
