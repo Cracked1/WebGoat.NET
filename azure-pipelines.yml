@@ -47,7 +47,7 @@ steps:
     createProfile: false
     scanStatusCheckInterval: '60'
     importResults: true
-    failBuildOnPolicyFail: false
+    failBuildOnPolicyFail: true
 
 - task: Veracode Flaw Importer@2
   inputs:
