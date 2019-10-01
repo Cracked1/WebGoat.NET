@@ -15,35 +15,17 @@ variables:
   buildConfiguration: 'Debug'
 
 steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
 - task: Veracode@2
   inputs:
     ConnectionDetailsSelection: 'Credentials'
     username: 'saifullah.sk@moneymart.com'
     password: 'Mymoney@0021'
     veracodeAppProfile: 'InstaCheques'
-    version: '$(build.buildNumber)'
+#    version: '$(build.buildNumber)'
 #    filepath: '$(build.artifactstagingdirectory)'
-    filepath: 'd:\a\1\s\WebGoat\bin'
+#    filepath: 'd:\a\1\s\WebGoat\bin'
     sandboxName: 'webgoat'
-    createSandBox: true
+    createSandBox: false
     createProfile: false
     scanStatusCheckInterval: '60'
     importResults: true
