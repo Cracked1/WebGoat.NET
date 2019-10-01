@@ -26,6 +26,6 @@ steps:
     sandboxName: 'webgoat'
     importType: 'All Unmitigated Flaws Violating Policy'
     workItemType: 'Bug'
-    addCustomTag: 'customtag'
+    addCustomTag: 'sast_vuln'
     area: '$(system.teamProject)'
     flawImportLimit: '5000'
