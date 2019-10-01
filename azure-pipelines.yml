@@ -14,11 +14,6 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Debug'
   enableCustomProcessTemplate: true
-  customWorkItemType: Bug
-  customPTActiveStatus: InProgress
-  customPTNewStatus: New
-  customPTResolvedStatus: Resolved
-  customPTCloseStatus: Closed
 
 steps:
 
@@ -31,5 +26,6 @@ steps:
     sandboxName: 'webgoat'
     importType: 'All Unmitigated Flaws Violating Policy'
     workItemType: 'Bug'
+    addCustomTag: 'customtag'
     area: '$(system.teamProject)'
     flawImportLimit: '5000'
