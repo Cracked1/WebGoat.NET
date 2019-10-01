@@ -40,7 +40,8 @@ steps:
     password: 'Mymoney@0021'
     veracodeAppProfile: 'InstaCheques'
     version: '$(build.buildNumber)'
-    filepath: '$(build.artifactstagingdirectory)'
+#    filepath: '$(build.artifactstagingdirectory)'
+    filepath: 'd:\a\1\s\WebGoat\bin
     sandboxName: 'webgoat'
     createSandBox: true
     createProfile: false
