@@ -24,6 +24,7 @@ steps:
     veracodeAppProfile: 'InstaCheques'
     sandboxName: 'webgoat'
     importType: 'All Unmitigated Flaws Violating Policy'
-    workItemType: 'Bug'
+    workItemType: 'Issue'
     area: '$(system.teamProject)'
+    addCustomTag: 'sast_vuln'
     flawImportLimit: '5000'
