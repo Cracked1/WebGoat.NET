@@ -14,6 +14,11 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Debug'
   enableCustomProcessTemplate: true
+  customWorkItemType: Bug
+  customPTActiveStatus: In Progress
+  customPTNewStatus: New
+  customPTResolvedStatus: Resolved
+  customPTCloseStatus: Closed
 
 steps:
 
