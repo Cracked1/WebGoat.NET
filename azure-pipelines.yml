@@ -39,27 +39,13 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: Veracode@2
-  inputs:
-    ConnectionDetailsSelection: 'Credentials'
-    username: 'saifullah.sk@moneymart.com'
-    password: 'Mymoney@0021'
-    veracodeAppProfile: 'InstaCheques'
-    version: '$(build.buildNumber)'
-#    filepath: '$(build.artifactstagingdirectory)'
-    filepath: 'd:\a\1\s\WebGoat\bin'
-    sandboxName: 'webgoat'
-    createSandBox: true
-    createProfile: false
-    scanStatusCheckInterval: '60'
-    importResults: true
-    failBuildOnPolicyFail: true
+
 
 - task: Veracode Flaw Importer@2
   inputs:
     ConnectionDetailsSelection: 'Credentials'
-    username: 'saifullah.dabir@outlook.com'
-    password: 'Myoutlook@00'
+    username: 'saifullah.sk@moneymart.com'
+    password: 'Mymoney@0021'
     veracodeAppProfile: 'InstaCheques'
     sandboxName: 'webgoat'
     importType: 'All Unmitigated Flaws Violating Policy'
