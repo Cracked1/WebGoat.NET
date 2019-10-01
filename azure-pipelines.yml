@@ -45,6 +45,18 @@ steps:
     sandboxName: 'webgoat'
     createSandBox: true
     createProfile: false
-    scanStatusCheckInterval: '30'
-    importResults: false
+    scanStatusCheckInterval: '60'
+    importResults: true
     failBuildOnPolicyFail: false
+
+- task: Veracode Flaw Importer@2
+  inputs:
+    ConnectionDetailsSelection: 'Credentials'
+    username: 'saifullah.dabir@outlook.com'
+    password: 'Myoutlook@00'
+    veracodeAppProfile: 'InstaCheques'
+    sandboxName: 'webgoat'
+    importType: 'All Unmitigated Flaws Violating Policy'
+    workItemType: 'Bug'
+    area: '$(system.teamProject)'
+    flawImportLimit: '5000'
