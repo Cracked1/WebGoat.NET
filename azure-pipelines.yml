@@ -27,12 +27,12 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-
 - task: DotNetCoreCLI@2
   inputs:
     command: 'custom'
-    custom: 'dotnet add package'
+    custom: 'add package'
     arguments: 'Microsoft.CodeAnalysis.FxCopAnalyzers  --version 2.0.0-beta2'
+
 
 - task: VSBuild@1
   inputs:
