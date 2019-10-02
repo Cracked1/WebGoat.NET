@@ -67,4 +67,4 @@ steps:
     workItemType: 'Bug'
     addCustomTag: 'sast_vuln'
     area: '$(system.teamProject)'
-    flawImportLimit: '5000
+    flawImportLimit: '5000'
