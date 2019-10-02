@@ -14,19 +14,51 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Debug'
   enableCustomProcessTemplate: true
-  customWorkItemType: Bug
-  customPTActiveStatus: In Progress
-  customPTNewStatus: New
-  customPTResolvedStatus: Resolved
-  customPTCloseStatus: Closed
+  customWorkItemType: 'Bug'
+  customPTActiveStatus: 'In Progress'
+  customPTNewStatus: 'New'
+  customPTResolvedStatus: 'Resolved'
+  customPTCloseStatus: 'Closed'
 
 steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: Veracode@2
+  inputs:
+    ConnectionDetailsSelection: 'Credentials'
+    username: 'veracode_username’
+    password: 'veracode_password'
+    veracodeAppProfile: 'InstaCheques'
+    version: '$(build.buildNumber)'
+    filepath: 'd:\a\1\s\WebGoat\bin'
+    sandboxName: 'webgoat'
+    createSandBox: true
+    createProfile: false
+    scanStatusCheckInterval: '60'
+    importResults: true
+    failBuildOnPolicyFail: true
 
 - task: Veracode Flaw Importer@2
   inputs:
     ConnectionDetailsSelection: 'Credentials'
-    username: 'saifullah.sk@moneymart.com'
-    password: 'Mymoney@0021'
+    username: 'veracode_username’
+    password: 'veracode_password’
     veracodeAppProfile: 'InstaCheques'
     sandboxName: 'webgoat'
     importType: 'All Unmitigated Flaws Violating Policy'
