@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'windows-2019'
 
 variables:
   solution: '**/*.sln'
@@ -30,8 +30,8 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'custom'
-    custom: 'add package'
-    arguments: 'Microsoft.CodeAnalysis.FxCopAnalyzers  --version 2.0.0-beta2'
+    custom: 'add'
+    arguments: 'package Microsoft.CodeAnalysis.FxCopAnalyzers --version 2.9.3'
 
 
 - task: VSBuild@1
