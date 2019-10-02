@@ -13,6 +13,12 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Debug'
+  enableCustomProcessTemplate: true
+  customWorkItemType: 'Bug'
+  customPTActiveStatus: 'In Progress'
+  customPTNewStatus: 'New'
+  customPTResolvedStatus: 'Resolved'
+  customPTCloseStatus: 'Closed'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -24,7 +30,9 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true 
+
+/p:PackageLocation="$(build.artifactStagingDirectory)"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
@@ -40,10 +48,9 @@ steps:
     password: 'Mymoney@0021'
     veracodeAppProfile: 'InstaCheques'
     version: '$(build.buildNumber)'
-#    filepath: '$(build.artifactstagingdirectory)'
     filepath: 'd:\a\1\s\WebGoat\bin'
     sandboxName: 'webgoat'
-    createSandBox: false
+    createSandBox: true
     createProfile: false
     scanStatusCheckInterval: '60'
     importResults: true
@@ -58,5 +65,6 @@ steps:
     sandboxName: 'webgoat'
     importType: 'All Unmitigated Flaws Violating Policy'
     workItemType: 'Bug'
+    addCustomTag: 'sast_vuln'
     area: '$(system.teamProject)'
-    flawImportLimit: '5000'
+    flawImportLimit: '5000
