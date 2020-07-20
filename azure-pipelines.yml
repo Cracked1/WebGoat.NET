@@ -12,15 +12,21 @@ pool:
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
-  buildConfiguration: 'Debug'
-  enableCustomProcessTemplate: true
-  customWorkItemType: 'Bug'
-  customPTActiveStatus: 'In Progress'
-  customPTNewStatus: 'New'
-  customPTResolvedStatus: 'Resolved'
-  customPTCloseStatus: 'Closed'
+  buildConfiguration: 'Release'
 
 steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
 - task: Veracode@3
   inputs:
@@ -32,7 +38,7 @@ steps:
     filepath: '$(build.artifactstagingdirectory)'
     sandboxName: 'test'
     createSandBox: false
-    createProfile: true
+    createProfile: false
     failTheBuildIfVeracodeScanDidNotInitiate: false
     scanStatusCheckInterval: '60'
     importResults: false
