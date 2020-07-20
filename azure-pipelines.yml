@@ -35,7 +35,7 @@ steps:
     apiKey: '6435ddc77711dc15a81660ebfd86ebbdbd99fa500a7d56ae10862cbdc21fc1a30cf4b5a77b41da77cab1d0b8636088ade9d9943bb95b74a491907064dc3927ae'
     veracodeAppProfile: 'InstaCheques'
     version: '$(build.buildNumber)'
-    filepath: '$(build.artifactstagingdirectory)'
+    filepath: 'd:\a\1\s\WebGoat\bin\'
     sandboxName: 'test'
     createSandBox: false
     createProfile: false
