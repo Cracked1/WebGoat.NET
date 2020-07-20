@@ -39,7 +39,7 @@ steps:
     sandboxName: 'test'
     createSandBox: false
     createProfile: false
-    failTheBuildIfVeracodeScanDidNotInitiate: false
+    failTheBuildIfVeracodeScanDidNotInitiate: true
     scanStatusCheckInterval: '60'
     importResults: false
     failBuildOnPolicyFail: false
