@@ -22,17 +22,18 @@ variables:
 
 steps:
 
-
-
-- task: Veracode Flaw Importer@2
+- task: Veracode@3
   inputs:
     ConnectionDetailsSelection: 'Credentials'
-    username: 'saifullah.sk@moneymart.com'
-    password: 'Mymoney@0021'
+    apiId: '4e8bfa81642a57aa1171718613bf5695'
+    apiKey: '6435ddc77711dc15a81660ebfd86ebbdbd99fa500a7d56ae10862cbdc21fc1a30cf4b5a77b41da77cab1d0b8636088ade9d9943bb95b74a491907064dc3927ae'
     veracodeAppProfile: 'InstaCheques'
-    sandboxName: 'webgoat'
-    importType: 'All Unmitigated Flaws Violating Policy'
-    workItemType: 'Bug'
-    addCustomTag: 'sast_vuln'
-    area: '$(system.teamProject)'
-    flawImportLimit: '5000'
+    version: '$(build.buildNumber)'
+    filepath: '$(build.artifactstagingdirectory)'
+    sandboxName: 'test'
+    createSandBox: false
+    createProfile: true
+    failTheBuildIfVeracodeScanDidNotInitiate: false
+    scanStatusCheckInterval: '60'
+    importResults: false
+    failBuildOnPolicyFail: false
